@@ -1,0 +1,15 @@
+# Node.js dependencies
+node_modules/
+
+# Prisma generated files
+prisma/migrations/
+
+# SQLite Database file
+*.db
+
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+.idea/

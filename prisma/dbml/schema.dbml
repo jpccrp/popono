@@ -1,0 +1,56 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Employee {
+  id Int [pk, increment]
+  firstName String [not null]
+  lastName String [not null]
+  email String [unique, not null]
+  password String [not null]
+  isAdmin Boolean [not null]
+  departments Department [not null]
+  departmentHeads DepartmentHead [not null]
+  attendanceRecords AttendanceRecord [not null]
+  exceptions Exception [not null]
+}
+
+Table Department {
+  id Int [pk, increment]
+  name String [unique, not null]
+  employees Employee [not null]
+  departmentHeads DepartmentHead [not null]
+}
+
+Table DepartmentHead {
+  id Int [pk, increment]
+  employee Employee [not null]
+  employeeId Int [not null]
+  department Department [not null]
+  departmentId Int [not null]
+}
+
+Table AttendanceRecord {
+  id Int [pk, increment]
+  date DateTime [not null]
+  punchType String [not null]
+  timestamp DateTime [not null]
+  employee Employee [not null]
+  employeeId Int [not null]
+}
+
+Table Exception {
+  id Int [pk, increment]
+  date DateTime [not null]
+  note String [not null]
+  employee Employee [not null]
+  employeeId Int [not null]
+}
+
+Ref: DepartmentHead.employeeId > Employee.id
+
+Ref: DepartmentHead.departmentId > Department.id
+
+Ref: AttendanceRecord.employeeId > Employee.id
+
+Ref: Exception.employeeId > Employee.id
